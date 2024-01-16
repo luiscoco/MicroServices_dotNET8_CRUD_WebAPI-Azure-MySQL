@@ -1,5 +1,7 @@
 # How to create Azure MySQL instance
 
+## 1. Prerequisite -> Create Azure MySQL instance
+
 Server Name: mysqlserver1974
 
 ![image](https://github.com/luiscoco/Azure_MySQL_database_sample/assets/32194879/7888e174-5874-4088-b60d-169e633ce207)
