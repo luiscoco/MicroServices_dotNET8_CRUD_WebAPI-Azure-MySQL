@@ -1,5 +1,7 @@
 # How to create Azure MySQL instance
 
+The source code is available in this github: https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL
+
 ## 1. Prerequisite -> Create Azure MySQL instance
 
 Server Name: mysqlserver1974
