@@ -30,6 +30,12 @@ Password: LuiscocoXXXXXXXXXXX
 
 ![image](https://github.com/luiscoco/Azure_MySQL_database_sample/assets/32194879/d5d3aa4e-ca08-4685-b34a-5646218a7b06)
 
+We navigate to the **Networking** tab and we add our laptop IP address as a FireWall rule
+
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL/assets/32194879/1d7c4f75-f426-4a7f-9f5a-e77d476d9017)
+
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL/assets/32194879/668b307f-4617-4ebd-a431-8d07d911c928)
+
 We can now access Azure MySQL from MySQL Workbench setting the hostname, username and password
 
 ![image](https://github.com/luiscoco/Azure_MySQL_database_sample/assets/32194879/4adddbe8-dbdc-46a4-b7d5-8cd2abb2012c)
