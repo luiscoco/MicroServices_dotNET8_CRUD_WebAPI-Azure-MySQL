@@ -72,7 +72,7 @@ CREATE DATABASE mysqldatabase
 
 We create a new Table an insert some rows
 
-```
+```sql
 CREATE TABLE Items (
     Id INT AUTO_INCREMENT PRIMARY KEY,
     Name VARCHAR(255) NOT NULL
