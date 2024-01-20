@@ -42,6 +42,6 @@ Now we can test the connection pressing on the **Test connection** button
 
 ![image](https://github.com/luiscoco/Azure_MySQL_database_sample/assets/32194879/2fcf9252-d1ed-40d2-8a77-2e013f890f3b)
 
-## 2. How to Create .NET 8 WebAPI CRUD Microservie with Dapper
+## 2. How to Create .NET 8 WebAPI CRUD Microservice with Dapper
 
 
