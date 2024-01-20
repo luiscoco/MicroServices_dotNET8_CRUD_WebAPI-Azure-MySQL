@@ -426,5 +426,23 @@ http://localhost:8080/api/Items
 
 ![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL/assets/32194879/517b7597-a1c6-4f04-9fde-244456653c5a)
 
+If we would like to access with Swagger the API documentation, we first should comment in program.cs the following lines:
+
+```csharp
+...
+// Configure the HTTP request pipeline.
+//if (app.Environment.IsDevelopment())
+//{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+//}
+...
+```
+
+Now we can run the docker container and access to API documentation (Swagger)
+
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL/assets/32194879/2015e1a3-ae5d-41ca-b9d9-006ec9f709a4)
+
+
 ## 4. How to deploy the WebAPI Microservice to Kubernetes (in Docker Desktop)
 
