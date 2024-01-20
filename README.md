@@ -520,6 +520,25 @@ And also to modify the Dockerfile to copy the certificate adding this line:
 COPY ["certificate.pfx", "."]
 ```
 
+If we would like to access our application via HTTP or HTTPS we run the docker container with this command
+
+```
+docker run -d -p 8080:8080 -p 8081:8081 myapp:latest
+```
+
+We verify in Docker Desktop
+
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL/assets/32194879/cd1fd66b-f245-4113-897b-ae805d8a9584)
+
+We verify the applicatin endpoints
+
+http://localhost:8080/swagger/index.html
+
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL/assets/32194879/21012929-8ba2-4a7e-a0c2-faec5e33e196)
+
+https://localhost:8081/swagger/index.html
+
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL/assets/32194879/51d9fa18-db7f-48b7-a3cd-47a19e16ff07)
 
 ## 4. How to deploy the WebAPI Microservice to Kubernetes (in Docker Desktop)
 
