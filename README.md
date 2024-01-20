@@ -513,24 +513,54 @@ We first have to modify the **appsettings.json** file
 
 We also need to modify the **Program.cs** file commenting this line: //app.UseHttpsRedirection();
 
-And also to modify the Dockerfile to copy the certificate adding this line: 
+And also to modify the **Dockerfile** to copy the certificate adding this line: 
 
 ```
 # Copy the certificate file into the Docker image
 COPY ["certificate.pfx", "."]
 ```
 
-If we would like to access our application via HTTP or HTTPS we run the docker container with this command
+See the new Dockerfile
+
+```
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
+USER app
+WORKDIR /app
+EXPOSE 8080
+EXPOSE 8081
+
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+ARG BUILD_CONFIGURATION=Release
+WORKDIR /src
+COPY ["AzureMySQLWebAPI.csproj", "."]
+RUN dotnet restore "./././AzureMySQLWebAPI.csproj"
+COPY . .
+WORKDIR "/src/."
+RUN dotnet build "./AzureMySQLWebAPI.csproj" -c $BUILD_CONFIGURATION -o /app/build
+
+FROM build AS publish
+ARG BUILD_CONFIGURATION=Release
+RUN dotnet publish "./AzureMySQLWebAPI.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+
+FROM base AS final
+WORKDIR /app
+COPY --from=publish /app/publish .
+# Copy the certificate file into the Docker image
+COPY ["certificate.pfx", "."]
+ENTRYPOINT ["dotnet", "AzureMySQLWebAPI.dll"]
+```
+
+If we would like to access our application via **HTTP** or **HTTPS** we run the docker container with this command
 
 ```
 docker run -d -p 8080:8080 -p 8081:8081 myapp:latest
 ```
 
-We verify in Docker Desktop
+We verify in **Docker Desktop**
 
 ![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL/assets/32194879/cd1fd66b-f245-4113-897b-ae805d8a9584)
 
-We verify the applicatin endpoints
+We verify the **application endpoints**
 
 http://localhost:8080/swagger/index.html
 
