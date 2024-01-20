@@ -497,10 +497,10 @@ We first have to modify the **appsettings.json** file
   "Kestrel": {
     "Endpoints": {
       "Http": {
-        "Url": "http://localhost:8080"
+        "Url": "http://*:8080"
       },
       "Https": {
-        "Url": "https://localhost:8081",
+        "Url": "https://*:8081",
         "Certificate": {
           "Path": "certificate.pfx",
           "Password": "123456"
@@ -510,6 +510,16 @@ We first have to modify the **appsettings.json** file
   }
 }
 ```
+
+We also need to modify the **Program.cs** file commenting this line: //app.UseHttpsRedirection();
+
+And also to modify the Dockerfile to copy the certificate adding this line: 
+
+```
+# Copy the certificate file into the Docker image
+COPY ["certificate.pfx", "."]
+```
+
 
 ## 4. How to deploy the WebAPI Microservice to Kubernetes (in Docker Desktop)
 
