@@ -668,10 +668,12 @@ spec:
   selector:
     app: myapp
   ports:
-    - protocol: TCP
+    - name: http
+      protocol: TCP
       port: 80
       targetPort: 8080
-    - protocol: TCP
+    - name: https
+      protocol: TCP
       port: 443
       targetPort: 8081
 ```
@@ -725,3 +727,22 @@ Verify the service status with the command:
 ```
 kubectl get services
 ```
+
+We can also verify the deployment with this command
+
+```
+kubectl get all
+```
+
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL/assets/32194879/587f6d89-ac35-4edc-a9cf-c882d2e61f44)
+
+We verify the application access endpoint
+
+http://localhost/swagger/index.html
+
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL/assets/32194879/d39b1a51-11fe-4058-9bbd-b902e123ee77)
+
+
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL/assets/32194879/a4a4108d-21e6-4b69-81ff-49c38d3051f4)
+
+
