@@ -34,7 +34,7 @@ We navigate to the **Networking** tab and we add our laptop IP address as a Fire
 
 ![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL/assets/32194879/1d7c4f75-f426-4a7f-9f5a-e77d476d9017)
 
-![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL/assets/32194879/668b307f-4617-4ebd-a431-8d07d911c928)
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL/assets/32194879/1d162c08-e972-43c2-9d0a-a6d9a52394e5)
 
 We can now access Azure MySQL from MySQL Workbench setting the hostname, username and password
 
