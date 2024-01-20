@@ -22,4 +22,6 @@ RUN dotnet publish "./AzureMySQLWebAPI.csproj" -c $BUILD_CONFIGURATION -o /app/p
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+# Copy the certificate file into the Docker image
+COPY ["certificate.pfx", "."]
 ENTRYPOINT ["dotnet", "AzureMySQLWebAPI.dll"]
