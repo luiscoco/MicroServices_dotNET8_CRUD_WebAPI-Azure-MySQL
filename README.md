@@ -396,8 +396,20 @@ We right click on the project and select Open in Terminal and the we run the fol
 docker build -t myapp:latest .
 ```
 
+We verify the Docker image was created with the command
+
+```
+docker images
+```
+
 We run the Docker container with the following command
 
 ```
 
+```
+
+We verify the running docker container with the command
+
+```
+docker ps
 ```
