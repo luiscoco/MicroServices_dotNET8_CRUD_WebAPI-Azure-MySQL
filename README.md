@@ -1,4 +1,4 @@
-# How to create .NET8 CRUD WebAPI Azure MySQL Microservice
+# How to create .NET8 CRUD WebAPI Azure MySQL Microservice and deploy to Docker Desktop and Kubernetes (in your local laptop)
 
 The source code is available in this github: https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL
 
@@ -571,4 +571,18 @@ https://localhost:8081/swagger/index.html
 ![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL/assets/32194879/51d9fa18-db7f-48b7-a3cd-47a19e16ff07)
 
 ## 4. How to deploy the WebAPI Microservice to Kubernetes (in Docker Desktop)
+
+We enable **Kubernetes** in **Docker Desktop**
+
+
+
+Here are the general steps to deploy your .NET 8 Web API to Kubernetes:
+
+- **Build** and **Push** the Docker image to the **Docker Hub registry/repo**
+
+- Create Kubernetes **Deployment YAML file**. This file defines how your application is deployed in Kubernetes.
+
+- Create Kubernetes **Service YAML file**. This file defines how your application is exposed, either within Kubernetes cluster or to the outside world.
+
+- Apply the **YAML** files to your Kubernetes Cluster: use the command "kubectl apply" to create the resource defined in your YAML file in your Kubernetes cluster.
 
