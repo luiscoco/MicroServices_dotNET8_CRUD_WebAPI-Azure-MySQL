@@ -356,6 +356,12 @@ We **run the application** and we verify the enpoints with swagger
 
 ## 3. How to deploy the WebAPI Microservice to Docker Desktop
 
+We right click on the project and we add Docker support... 
+
+Automatically Visual Studio will create the Dockerfile
+
+**Dockerfile**
+
 ```
 #See https://aka.ms/customizecontainer to learn how to customize your debug container and how Visual Studio uses this Dockerfile to build your images for faster debugging.
 
@@ -384,4 +390,14 @@ COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "AzureMySQLWebAPI.dll"]
 ```
 
+We right click on the project and select Open in Terminal and the we run the following command to create the Docker image
 
+```
+docker build -t myapp:latest .
+```
+
+We run the Docker container with the following command
+
+```
+
+```
