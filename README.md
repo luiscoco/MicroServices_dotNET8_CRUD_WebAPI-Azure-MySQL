@@ -584,6 +584,8 @@ We select **Enable Kubernetes** in the left hand side menu an press **Apply & Re
 
 ![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL/assets/32194879/40aac32a-67a4-4b1e-9bf6-c1bff1843896)
 
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL/assets/32194879/c7823d67-e0cc-4162-b6db-2218420ac3a6)
+
 Here are the general steps to deploy your .NET 8 Web API to Kubernetes:
 
 - **Build** and **Push** the Docker image to the **Docker Hub registry/repo**
@@ -612,5 +614,6 @@ Then we use the docker push command to upload the image to the Docker Hub reposi
 docker push luiscoco/myapp:latest
 ```
 
-**Note*: run the "**docker login**" command if you have no access to Docker Hub repo
+**Note**: run the "**docker login**" command if you have no access to Docker Hub repo
+
 
