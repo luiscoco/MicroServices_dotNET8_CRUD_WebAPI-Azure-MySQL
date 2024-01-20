@@ -1,4 +1,4 @@
-# How to create .NET8 CRUD WebAPI Azure MySQL Microservice
+# How to create .NET8 CRUD WebAPI Azure MySQL Microservice and deploy to Docker Desktop and Kubernetes (in your local laptop)
 
 The source code is available in this github: https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL
 
@@ -497,10 +497,10 @@ We first have to modify the **appsettings.json** file
   "Kestrel": {
     "Endpoints": {
       "Http": {
-        "Url": "http://localhost:8080"
+        "Url": "http://*:8080"
       },
       "Https": {
-        "Url": "https://localhost:8081",
+        "Url": "https://*:8081",
         "Certificate": {
           "Path": "certificate.pfx",
           "Password": "123456"
@@ -511,5 +511,238 @@ We first have to modify the **appsettings.json** file
 }
 ```
 
+We also need to modify the **Program.cs** file commenting this line: //app.UseHttpsRedirection();
+
+And also to modify the **Dockerfile** to copy the certificate adding this line: 
+
+```
+# Copy the certificate file into the Docker image
+COPY ["certificate.pfx", "."]
+```
+
+See the new Dockerfile
+
+```
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
+USER app
+WORKDIR /app
+EXPOSE 8080
+EXPOSE 8081
+
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+ARG BUILD_CONFIGURATION=Release
+WORKDIR /src
+COPY ["AzureMySQLWebAPI.csproj", "."]
+RUN dotnet restore "./././AzureMySQLWebAPI.csproj"
+COPY . .
+WORKDIR "/src/."
+RUN dotnet build "./AzureMySQLWebAPI.csproj" -c $BUILD_CONFIGURATION -o /app/build
+
+FROM build AS publish
+ARG BUILD_CONFIGURATION=Release
+RUN dotnet publish "./AzureMySQLWebAPI.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+
+FROM base AS final
+WORKDIR /app
+COPY --from=publish /app/publish .
+# Copy the certificate file into the Docker image
+COPY ["certificate.pfx", "."]
+ENTRYPOINT ["dotnet", "AzureMySQLWebAPI.dll"]
+```
+
+If we would like to access our application via **HTTP** or **HTTPS** we run the docker container with this command
+
+```
+docker run -d -p 8080:8080 -p 8081:8081 myapp:latest
+```
+
+We verify in **Docker Desktop**
+
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL/assets/32194879/cd1fd66b-f245-4113-897b-ae805d8a9584)
+
+We verify the **application endpoints**
+
+http://localhost:8080/swagger/index.html
+
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL/assets/32194879/21012929-8ba2-4a7e-a0c2-faec5e33e196)
+
+https://localhost:8081/swagger/index.html
+
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL/assets/32194879/51d9fa18-db7f-48b7-a3cd-47a19e16ff07)
+
 ## 4. How to deploy the WebAPI Microservice to Kubernetes (in Docker Desktop)
+
+For more details about this section see the repo: https://github.com/luiscoco/Kubernetes_Deploy_dotNET_8_Web_API
+
+We enable **Kubernetes** in **Docker Desktop**
+
+We run **Docker Desktop** and press on **Settings** button
+
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL/assets/32194879/8400e0df-1b4b-48c6-8b8d-a2abc4cd1868)
+
+We select **Enable Kubernetes** in the left hand side menu an press **Apply & Restart** button
+
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL/assets/32194879/40aac32a-67a4-4b1e-9bf6-c1bff1843896)
+
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL/assets/32194879/c7823d67-e0cc-4162-b6db-2218420ac3a6)
+
+Here are the general steps to deploy your .NET 8 Web API to Kubernetes:
+
+- **Build** and **Push** the Docker image to the **Docker Hub registry/repo**
+
+- Create Kubernetes **Deployment YAML file**. This file defines how your application is deployed in Kubernetes.
+
+- Create Kubernetes **Service YAML file**. This file defines how your application is exposed, either within Kubernetes cluster or to the outside world.
+
+- Apply the **YAML** files to your Kubernetes Cluster: use the command "kubectl apply" to create the resource defined in your YAML file in your Kubernetes cluster.
+
+We start building and pushing the application Docker image to the Docker Hub registry/repo
+
+```
+docker build -t luiscoco/myapp:latest .
+```
+
+To verify we created the docker image run the command:
+
+```
+docker images
+```
+
+Then we use the docker push command to upload the image to the Docker Hub repository:
+
+```
+docker push luiscoco/myapp:latest
+```
+
+**Note**: run the "**docker login**" command if you have no access to Docker Hub repo
+
+We create the deployment.yml and the service.yml files in our project
+
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL/assets/32194879/45cd598d-c158-46ec-a738-015c93f985ed)
+
+**deployment.yml**
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+      - name: myapp
+        image: luiscoco/myapp:latest
+        ports:
+        - containerPort: 8080
+        - containerPort: 8081
+        env:
+        - name: ConnectionStrings__DefaultConnection
+          value: server=mysqlserver1974.mysql.database.azure.com;database=mysqldatabase;user=adminmysql;password=Luiscoco123456
+        volumeMounts:
+        - mountPath: /app/certificate.pfx
+          name: cert-volume
+          subPath: certificate.pfx
+      volumes:
+      - name: cert-volume
+        secret:
+          secretName: myapp-cert
+```
+
+**service.yml**
+
+```yml
+apiVersion: v1
+kind: Service
+metadata:
+  name: myapp-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: myapp
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 8080
+    - name: https
+      protocol: TCP
+      port: 443
+      targetPort: 8081
+```
+
+We set the current Kubernetes context to Docker Desktop Kubernetes with this command:
+
+```
+kubectl config use-context docker-desktop
+```
+
+In a typical Kubernetes deployment, the files used for configuration (like **certificates**) need to be accessible to the Kubernetes cluster. 
+
+The most secure and common approach is to use a **Kubernetes Secret**. 
+
+Since your certificate is a sensitive file, it should be managed as a Secret. 
+
+Here's how you can modify your deployment to use a Kubernetes Secret for your certificate:
+
+**We create a Kubernetes Secret that contains your certificate**. 
+
+You can do this by running the following command in your terminal (make sure you're in the directory where **certificate.pfx** is located):
+
+```
+kubectl create secret generic myapp-cert --from-file=certificate.pfx
+```
+
+This command creates a new Secret named myapp-cert with the contents of certificate.pfx.
+
+Now we can apply both kubernetes manifest files with these commands
+
+```
+kubectl apply -f deployment.yml
+```
+
+and
+
+```
+kubectl apply -f service.yml
+```
+
+We can use the command "**kubectl get services**" to check the **external IP** and port your application is accessible on, if using a LoadBalancer.
+
+Verify the Deployment with the command:
+
+```
+kubectl get deployments
+```
+
+Verify the service status with the command:
+
+```
+kubectl get services
+```
+
+We can also verify the deployment with this command
+
+```
+kubectl get all
+```
+
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL/assets/32194879/587f6d89-ac35-4edc-a9cf-c882d2e61f44)
+
+We verify the application access endpoint
+
+http://localhost/swagger/index.html
+
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL/assets/32194879/d39b1a51-11fe-4058-9bbd-b902e123ee77)
+
+
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL/assets/32194879/a4a4108d-21e6-4b69-81ff-49c38d3051f4)
+
 
