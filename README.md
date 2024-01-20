@@ -461,6 +461,19 @@ We select the certificate and we export it to PFX file
 
 ![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL/assets/32194879/f9dd52b9-7ee4-49ac-a594-dd21c30e9f36)
 
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL/assets/32194879/9eac1ab9-6767-44f1-9f58-da57e3e94dd2)
+
+We select the option **Yes export the private key**
+
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL/assets/32194879/df5985e7-4c3b-47d1-8c94-8c55b8e530c3)
+
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL/assets/32194879/c01568e6-ed64-412c-a1aa-d44d3521dbac)
+
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL/assets/32194879/c750eada-574d-4463-b6cb-ab0bd12c0ddc)
+
+We save the **PFX** file in our local application source code folder
+
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL/assets/32194879/64206cce-9839-438f-8cf8-ee40d586053f)
 
 
 We first have to modify the **appsettings.json** file
