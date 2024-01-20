@@ -445,11 +445,23 @@ Now we can run the docker container and access to API documentation (Swagger)
 
 If we would like to run the application with **HTTPS** protocol we have to create a certificate
 
-We create a certificate with this command
+We create a certificate running in PowerShell this command
 
 ```
-
+New-SelfSignedCertificate -DnsName localhost -CertStoreLocation cert:\LocalMachine\My
 ```
+
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL/assets/32194879/3e8997b8-68a5-4d8e-89aa-54ff260abe90)
+
+We open **Manage Computer Certificates** and look for the certificate in the **Personal/Certificates** folder
+
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL/assets/32194879/f00ee620-1068-4589-8ead-3161452be58c)
+
+We select the certificate and we export it to PFX file
+
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL/assets/32194879/f9dd52b9-7ee4-49ac-a594-dd21c30e9f36)
+
+
 
 We first have to modify the **appsettings.json** file
 
