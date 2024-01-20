@@ -88,7 +88,13 @@ INSERT INTO Items (Name) VALUES ('Item 3');
 
 ## 2. How to Create .NET 8 WebAPI CRUD Microservice with Dapper
 
-We 
+We run Visual Studio 2022 Community Edition and we create a new project
+
+We select the **** project template
+
+We create the following project folders structure
+
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL/assets/32194879/8c763bd8-f05b-4702-8ad0-8b3897d9e8c0)
 
 We load the dependencies: **Dapper**, Microsoft.VisualStudio.Azure.Containers.Tools.Targets, **MySql.Data** and Swashbuckle.AspNetCore
 
