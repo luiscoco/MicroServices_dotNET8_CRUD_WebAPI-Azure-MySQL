@@ -623,7 +623,36 @@ We create the deployment.yml and the service.yml files in our project
 **deployment.yml**
 
 ```yaml
-
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+      - name: myapp
+        image: luiscoco/myapp:latest
+        ports:
+        - containerPort: 8080
+        - containerPort: 8081
+        env:
+        - name: ConnectionStrings__DefaultConnection
+          value: server=mysqlserver1974.mysql.database.azure.com;database=mysqldatabase;user=adminmysql;password=Luiscoco123456
+        volumeMounts:
+        - mountPath: /path/inside/container
+          name: cert-volume
+      volumes:
+      - name: cert-volume
+        secret:
+          secretName: myapp-cert
 ```
 
 **service.yml**
