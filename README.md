@@ -160,6 +160,8 @@ app.Run();
 
 We create the database **Model** in the Item.cs file
 
+**Item.cs**
+
 ```csharp
 namespace AzureMySQLWebAPI.Models
 {
@@ -173,6 +175,8 @@ namespace AzureMySQLWebAPI.Models
 ```
 
 We crate the database **Repository** in the ItemRepository.cs file
+
+**ItemRepository.cs**
 
 ```csharp
 using Dapper;
@@ -253,7 +257,9 @@ namespace AzureMySQLWebAPI.Data
 }
 ```
 
-We create the Controller for defining the database CRUD actions
+We create the **Controller** for defining the database CRUD actions
+
+**ItemsController.cs**
 
 ```csharp
 using Microsoft.AspNetCore.Mvc;
