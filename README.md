@@ -616,4 +616,64 @@ docker push luiscoco/myapp:latest
 
 **Note**: run the "**docker login**" command if you have no access to Docker Hub repo
 
+We create the deployment.yml and the service.yml files in our project
 
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL/assets/32194879/45cd598d-c158-46ec-a738-015c93f985ed)
+
+**deployment.yml**
+
+```yaml
+
+```
+
+**service.yml**
+
+```yml
+apiVersion: v1
+kind: Service
+metadata:
+  name: myapp-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: myapp
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+    - protocol: TCP
+      port: 443
+      targetPort: 8081
+```
+
+We set the current Kubernetes context to Docker Desktop Kubernetes with this command:
+
+```
+kubectl config use-context docker-desktop
+```
+
+We apply both manifest files with these commands
+
+```
+kubectl apply -f deployment.yml
+```
+
+and
+
+```
+kubectl apply -f service.yml
+```
+
+We can use the command "**kubectl get services**" to check the **external IP** and port your application is accessible on, if using a LoadBalancer.
+
+Verify the Deployment with the command:
+
+```
+kubectl get deployments
+```
+
+Verify the service status with the command:
+
+```
+kubectl get services
+```
