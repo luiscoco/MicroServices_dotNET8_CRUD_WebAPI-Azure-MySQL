@@ -88,11 +88,11 @@ INSERT INTO Items (Name) VALUES ('Item 3');
 
 ## 2. How to Create .NET 8 WebAPI CRUD Microservice with Dapper
 
-We create **appsettings.json**
+We define in the **appsettings.json** file the database connection string 
 
 ![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL/assets/32194879/484d634c-fba3-4562-98a7-3a5156182fcd)
 
-´´´json
+```json
 {
   "Logging": {
     "LogLevel": {
@@ -106,7 +106,9 @@ We create **appsettings.json**
     "DefaultConnection": "server=mysqlserver1974.mysql.database.azure.com;database=mysqldatabase;user=adminmysql;password=Luiscoco123456"
   }
 }
-´´´
+```
+
+We run the application and we verify the enpoints with swagger
 
 ![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL/assets/32194879/ad9de442-3317-4841-a5ca-c3e0a8812f6e)
 
