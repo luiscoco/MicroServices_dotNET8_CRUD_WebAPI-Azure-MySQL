@@ -572,6 +572,8 @@ https://localhost:8081/swagger/index.html
 
 ## 4. How to deploy the WebAPI Microservice to Kubernetes (in Docker Desktop)
 
+For more details about this section see the repo: https://github.com/luiscoco/Kubernetes_Deploy_dotNET_8_Web_API
+
 We enable **Kubernetes** in **Docker Desktop**
 
 
@@ -585,4 +587,22 @@ Here are the general steps to deploy your .NET 8 Web API to Kubernetes:
 - Create Kubernetes **Service YAML file**. This file defines how your application is exposed, either within Kubernetes cluster or to the outside world.
 
 - Apply the **YAML** files to your Kubernetes Cluster: use the command "kubectl apply" to create the resource defined in your YAML file in your Kubernetes cluster.
+
+We start building and pushing the application Docker image to the Docker Hub registry/repo
+
+```
+docker build -t luiscoco/myapp:latest .
+```
+
+To verify we created the docker image run the command:
+
+```
+docker images
+```
+
+Then we use the docker push command to upload the image to the Docker Hub repository:
+
+```
+docker push luiscoco/myapp:latest
+```
 
