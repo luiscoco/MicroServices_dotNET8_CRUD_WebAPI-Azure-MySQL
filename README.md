@@ -114,6 +114,44 @@ We define in the **appsettings.json** file the database connection string
 }
 ```
 
+We register the database service in the **pogram.cs** file 
+
+**progam.cs**
+
+```
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using AzureMySQLWebAPI.Data;
+using AzureMySQLWebAPI.Controllers;
+
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+builder.Services.AddControllers();
+
+// Register database repository
+builder.Services.AddScoped<ItemRepository>(serviceProvider =>
+    new ItemRepository(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
+app.UseHttpsRedirection();
+app.UseAuthorization();
+app.MapControllers();
+app.Run();
+```
+
 We run the application and we verify the enpoints with swagger
 
 ![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL/assets/32194879/ad9de442-3317-4841-a5ca-c3e0a8812f6e)
