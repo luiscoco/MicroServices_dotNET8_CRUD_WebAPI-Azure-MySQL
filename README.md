@@ -647,8 +647,9 @@ spec:
         - name: ConnectionStrings__DefaultConnection
           value: server=mysqlserver1974.mysql.database.azure.com;database=mysqldatabase;user=adminmysql;password=Luiscoco123456
         volumeMounts:
-        - mountPath: /path/inside/container
+        - mountPath: /app/certificate.pfx
           name: cert-volume
+          subPath: certificate.pfx
       volumes:
       - name: cert-volume
         secret:
