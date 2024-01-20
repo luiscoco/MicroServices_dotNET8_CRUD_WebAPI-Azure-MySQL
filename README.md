@@ -86,6 +86,10 @@ INSERT INTO Items (Name) VALUES ('Item 3');
 
 ![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL/assets/32194879/37def597-fdf8-4751-bdac-6be5a0122adc)
 
+We can verify the inserted items
+
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL/assets/32194879/5b50e136-99a2-43c8-83ae-9d9037317211)
+
 ## 2. How to Create .NET 8 WebAPI CRUD Microservice with Dapper
 
 We run Visual Studio 2022 Community Edition and we create a new project
