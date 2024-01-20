@@ -178,7 +178,7 @@ namespace AzureMySQLWebAPI.Models
 }
 ```
 
-We crate the database **Repository** in the ItemRepository.cs file
+We create the database **Repository** in the ItemRepository.cs file
 
 **ItemRepository.cs**
 
@@ -443,9 +443,15 @@ Now we can run the docker container and access to API documentation (Swagger)
 
 ![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL/assets/32194879/2015e1a3-ae5d-41ca-b9d9-006ec9f709a4)
 
-If we 
+If we would like to run the application with **HTTPS** protocol we have to create a certificate
 
-We first have to modify the appsettings.json file
+We create a certificate with this command
+
+```
+
+```
+
+We first have to modify the **appsettings.json** file
 
 ```json
 {
@@ -468,8 +474,8 @@ We first have to modify the appsettings.json file
       "Https": {
         "Url": "https://localhost:8081",
         "Certificate": {
-          "Path": "<path-to-your-certificate.pfx>",
-          "Password": "<your-certificate-password>"
+          "Path": "certificate.pfx",
+          "Password": "123456"
         }
       }
     }
