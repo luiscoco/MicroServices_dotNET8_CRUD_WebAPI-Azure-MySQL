@@ -682,7 +682,25 @@ We set the current Kubernetes context to Docker Desktop Kubernetes with this com
 kubectl config use-context docker-desktop
 ```
 
-We apply both manifest files with these commands
+In a typical Kubernetes deployment, the files used for configuration (like **certificates**) need to be accessible to the Kubernetes cluster. 
+
+The most secure and common approach is to use a **Kubernetes Secret**. 
+
+Since your certificate is a sensitive file, it should be managed as a Secret. 
+
+Here's how you can modify your deployment to use a Kubernetes Secret for your certificate:
+
+**We create a Kubernetes Secret that contains your certificate**. 
+
+You can do this by running the following command in your terminal (make sure you're in the directory where **certificate.pfx** is located):
+
+```
+kubectl create secret generic myapp-cert --from-file=certificate.pfx
+```
+
+This command creates a new Secret named myapp-cert with the contents of certificate.pfx.
+
+Now we can apply both kubernetes manifest files with these commands
 
 ```
 kubectl apply -f deployment.yml
