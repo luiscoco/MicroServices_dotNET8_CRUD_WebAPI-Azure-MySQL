@@ -94,7 +94,19 @@ We can verify the inserted items
 
 We run Visual Studio 2022 Community Edition and we create a new project
 
-We select the **** project template
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL/assets/32194879/af1466b6-cc3c-4e12-9354-e32c964452bd)
+
+We select the **ASP Net Core Web API** project template
+
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL/assets/32194879/4fcaf53f-a3d9-4fee-bcca-40deea423567)
+
+We set the project name and location
+
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL/assets/32194879/1a0e2858-4f16-44a9-80dd-003e53d0c4c2)
+
+We select the project main features
+
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL/assets/32194879/13ae7b79-5c3f-4635-a162-574d0895d049)
 
 We create the following project folders structure, with the **Data** and **Models** new folders
 
