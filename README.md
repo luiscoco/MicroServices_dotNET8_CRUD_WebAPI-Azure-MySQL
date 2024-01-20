@@ -606,3 +606,5 @@ Then we use the docker push command to upload the image to the Docker Hub reposi
 docker push luiscoco/myapp:latest
 ```
 
+**Note*: run the "**docker login**" command if you have no access to Docker Hub repo
+
