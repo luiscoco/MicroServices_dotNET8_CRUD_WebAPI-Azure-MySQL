@@ -405,7 +405,7 @@ docker images
 We run the **Docker container** with the following command
 
 ```
-docker run -d -p 8080:8080 -p 8081:8081 myapp:latest
+docker run -d -p 8080:8080 myapp:latest
 ```
 
 Also in **Docker Desktop** we can see the Docker image and the running container
@@ -420,7 +420,7 @@ We verify the running docker container with the command
 docker ps
 ```
 
-We can access the **application endpoints** in the internet web browser
+We can access with **HTTP** protocol to the  **application endpoints**
 
 http://localhost:8080/api/Items
 
@@ -443,6 +443,39 @@ Now we can run the docker container and access to API documentation (Swagger)
 
 ![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL/assets/32194879/2015e1a3-ae5d-41ca-b9d9-006ec9f709a4)
 
+If we 
+
+We first have to modify the appsettings.json file
+
+```json
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft": "Warning",
+      "Microsoft.Hosting.Lifetime": "Information"
+    }
+  },
+  "AllowedHosts": "*",
+  "ConnectionStrings": {
+    "DefaultConnection": "server=mysqlserver1974.mysql.database.azure.com;database=mysqldatabase;user=adminmysql;password=Luiscoco123456"
+  },
+  "Kestrel": {
+    "Endpoints": {
+      "Http": {
+        "Url": "http://localhost:8080"
+      },
+      "Https": {
+        "Url": "https://localhost:8081",
+        "Certificate": {
+          "Path": "<path-to-your-certificate.pfx>",
+          "Password": "<your-certificate-password>"
+        }
+      }
+    }
+  }
+}
+```
 
 ## 4. How to deploy the WebAPI Microservice to Kubernetes (in Docker Desktop)
 
