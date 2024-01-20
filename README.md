@@ -405,11 +405,26 @@ docker images
 We run the Docker container with the following command
 
 ```
-
+docker run -d -p 8080:8080 -p 8081:8081 myapp:latest
 ```
+
+Also in Docker Desktop we can see the Docker image and the running container
+
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL/assets/32194879/416a9cba-1f26-474e-bae7-f0a86a5d583d)
+
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL/assets/32194879/39c252c9-82d5-4442-ac8c-1d2dff5a38c2)
 
 We verify the running docker container with the command
 
 ```
 docker ps
 ```
+
+We can access the application endpoints in the internet web browser
+
+http://localhost:8080/api/Items
+
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL/assets/32194879/517b7597-a1c6-4f04-9fde-244456653c5a)
+
+## 4. How to deploy the WebAPI Microservice to Kubernetes (in Docker Desktop)
+
