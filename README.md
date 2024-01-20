@@ -457,7 +457,7 @@ We open **Manage Computer Certificates** and look for the certificate in the **P
 
 ![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL/assets/32194879/f00ee620-1068-4589-8ead-3161452be58c)
 
-We select the certificate and we export it to PFX file
+We select the certificate and we **export to PFX** file
 
 ![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL/assets/32194879/f9dd52b9-7ee4-49ac-a594-dd21c30e9f36)
 
@@ -475,6 +475,9 @@ We save the **PFX** file in our local application source code folder
 
 ![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL/assets/32194879/64206cce-9839-438f-8cf8-ee40d586053f)
 
+We also copy the certificate from **Personal/Certificates** folder to **Trusted Root Certification Authorities/Certificates** folder
+
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL/assets/32194879/36381d7e-387b-4788-a323-82bfa501f119)
 
 We first have to modify the **appsettings.json** file
 
