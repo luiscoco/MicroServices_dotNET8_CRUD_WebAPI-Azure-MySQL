@@ -4,6 +4,18 @@ The source code is available in this github: https://github.com/luiscoco/MicroSe
 
 ## 1. Prerequisite -> Create Azure MySQL instance
 
+We navigate to **Create a resource** and select **Databases**
+
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL/assets/32194879/7bb4ea70-3f0f-48bc-8b89-e35bb54c5560)
+
+We select **Azure Database for MySQL**
+
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL/assets/32194879/85c7aaa5-e78a-44be-90a3-ba0f3bb044ec)
+
+We select create **Flexible server**
+
+![image](https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL/assets/32194879/3cffaceb-5f74-4ad9-aacd-ec4a7bb09561)
+
 Server Name: mysqlserver1974
 
 ![image](https://github.com/luiscoco/Azure_MySQL_database_sample/assets/32194879/7888e174-5874-4088-b60d-169e633ce207)
