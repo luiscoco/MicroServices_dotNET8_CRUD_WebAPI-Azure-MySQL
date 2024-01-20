@@ -2,7 +2,9 @@
 
 The source code is available in this github: https://github.com/luiscoco/MicroServices_dotNET8_CRUD_WebAPI-Azure-MySQL
 
-## 1. Prerequisite -> Create Azure MySQL instance
+## 1. Prerequisite
+
+### 1.1. Create Azure MySQL instance
 
 We navigate to **Create a resource** and select **Databases**
 
@@ -40,6 +42,8 @@ We can now access Azure MySQL from MySQL Workbench setting the hostname, usernam
 
 ![image](https://github.com/luiscoco/Azure_MySQL_database_sample/assets/32194879/4adddbe8-dbdc-46a4-b7d5-8cd2abb2012c)
 
+### 1.2. Run MySQL Workbench and create new database
+
 We run **MySQL Workbench** and we create a new connection
 
 ![image](https://github.com/luiscoco/Azure_MySQL_database_sample/assets/32194879/d9b15ade-9287-4ee3-a823-7c069d3f5882)
@@ -58,7 +62,31 @@ Now we can test the connection pressing on the **Test connection** button
 
 ![image](https://github.com/luiscoco/Azure_MySQL_database_sample/assets/32194879/ca86f888-4e09-4a90-b536-5c054ae4bc97)
 
+We create a database running this command
+
+´´´sql
+CREATE DATABASE mysqldatabase
+´´´
+
 ![image](https://github.com/luiscoco/Azure_MySQL_database_sample/assets/32194879/2fcf9252-d1ed-40d2-8a77-2e013f890f3b)
+
+We create a new Table an insert some rows
+
+```
+USE mysqldatabase
+
+CREATE TABLE Items (
+    Id INT AUTO_INCREMENT PRIMARY KEY,
+    Name VARCHAR(255) NOT NULL
+    -- Add other fields here as per your model
+);
+
+INSERT INTO Items (Name) VALUES ('Item 1');
+INSERT INTO Items (Name) VALUES ('Item 2');
+INSERT INTO Items (Name) VALUES ('Item 3');
+```
+
+
 
 ## 2. How to Create .NET 8 WebAPI CRUD Microservice with Dapper
 
