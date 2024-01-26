@@ -64,9 +64,9 @@ Now we can test the connection pressing on the **Test connection** button
 
 We create a database running this command
 
-´´´sql
+```sql
 CREATE DATABASE mysqldatabase
-´´´
+```
 
 ![image](https://github.com/luiscoco/Azure_MySQL_database_sample/assets/32194879/2fcf9252-d1ed-40d2-8a77-2e013f890f3b)
 
